@@ -7,7 +7,7 @@
     "nx": "nx",
     "start:shop": "ng serve shop --port=4201 -o",
     "build:shop": "ng build shop --prod",
-    "start:shop:pwa": "angular-http-server --open -p 8081 --path ./dist/apps/shop",
+    "start:shop:pwa": "npm run build:shop && angular-http-server -p 8080 --path ./dist/apps/shop",
     "test:shop": "ng test shop --watch --verbose",
     "start:warehouse": "ng serve warehouse --port=4202 -o",
     "build:warehouse": "ng build warehouse --prod",
