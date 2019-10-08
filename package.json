@@ -33,7 +33,12 @@
     "update:check": "ng update",
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
-    "help": "nx help"
+    "help": "nx help",
+    "start:ssr": "npm run build:ssr && npm run serve:ssr",
+    "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
+    "build:client-and-server-bundles": "ng build --prod && ng run shop:server:production --bundleDependencies all",
+    "compile:server": "webpack --config webpack.server.config.js --progress --colors",
+    "serve:ssr": "node dist/server"
   },
   "private": true,
   "dependencies": {
@@ -44,6 +49,7 @@
     "@angular/forms": "^8.0.0",
     "@angular/platform-browser": "^8.0.0",
     "@angular/platform-browser-dynamic": "^8.0.0",
+    "@angular/platform-server": "^8.0.0",
     "@angular/pwa": "^0.803.6",
     "@angular/router": "^8.0.0",
     "@angular/service-worker": "^8.0.0",
@@ -54,8 +60,11 @@
     "@ngrx/entity": "8.1.0",
     "@ngrx/router-store": "8.1.0",
     "@ngrx/store": "8.1.0",
+    "@nguniversal/express-engine": "8.1.1",
+    "@nguniversal/module-map-ngfactory-loader": "8.1.1",
     "@nrwl/schematics": "^8.4.13",
     "core-js": "^2.5.4",
+    "express": "^4.15.2",
     "reflect-metadata": "^0.1.12",
     "rxjs": "~6.4.0",
     "zone.js": "^0.9.1"
@@ -87,8 +96,10 @@
     "ngx-pwa-icons": "^0.1.2",
     "prettier": "1.16.4",
     "ts-jest": "24.0.0",
+    "ts-loader": "^5.2.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.4.5"
+    "typescript": "~3.4.5",
+    "webpack-cli": "^3.1.0"
   }
 }
