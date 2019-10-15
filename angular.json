@@ -26,9 +26,7 @@
               "apps/shop/src/assets",
               "apps/shop/src/manifest.webmanifest"
             ],
-            "styles": [
-              "apps/shop/src/styles.css"
-            ],
+            "styles": ["apps/shop/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -48,7 +46,6 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-
               "serviceWorker": true,
               "ngswConfigPath": "apps/shop/ngsw-config.json"
             }
@@ -176,6 +173,40 @@
                   "with": "apps/warehouse/src/environments/environment.prod.ts"
                 }
               ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            },
+            "production-es": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/warehouse/src/environments/environment.ts",
+                  "with": "apps/warehouse/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputPath": "dist/apps/warehouse/es/",
+              "i18nFile": "apps/warehouse/src/locale/messages.es.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "es",
+              "baseHref": "es",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -451,7 +482,8 @@
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/angular"
+    "defaultCollection": "@nrwl/angular",
+    "analytics": "d6da067d-83df-4f76-8274-649e69e2b284"
   },
   "schematics": {
     "@nrwl/angular:application": {

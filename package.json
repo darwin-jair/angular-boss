@@ -38,7 +38,10 @@
     "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
     "build:client-and-server-bundles": "ng build --prod && ng run shop:server:production --bundleDependencies all",
     "compile:server": "webpack --config webpack.server.config.js --progress --colors",
-    "serve:ssr": "node dist/server"
+    "serve:ssr": "node dist/server",
+    "i18n:warehouse": "ng xi18n warehouse --output-path src/locale",
+    "build:warehouse-es": "ng build warehouse --configuration=production-es",
+    "start:warehouse-es": "npm run build:warehouse-es && angular-http-server --open -p 8082 --path ./dist/apps/warehouse/es"
   },
   "private": true,
   "dependencies": {
