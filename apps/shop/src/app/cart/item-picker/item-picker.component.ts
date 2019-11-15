@@ -5,7 +5,7 @@ import {
   EventEmitter,
   Input,
   OnInit,
-  Output
+  Output,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BasketItem } from '../model/products.interface';
@@ -14,21 +14,21 @@ import { BasketItem } from '../model/products.interface';
   selector: 'ab-shop-item-picker',
   templateUrl: './item-picker.component.html',
   styles: [],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ItemPickerComponent implements OnInit {
   @Input() public products: Product[];
   @Output() public addItem = new EventEmitter<BasketItem>();
   public pickerFormGroup: FormGroup;
   private configuration = {
-    timeoutBackground: 3 * 1000
+    timeoutBackground: 5 * 1000,
   };
   constructor() {}
 
   ngOnInit() {
     this.pickerFormGroup = new FormGroup({
       product: new FormControl(),
-      units: new FormControl(0, [Validators.min(1)])
+      units: new FormControl(0, [Validators.min(1)]),
     });
     if (this.configuration.timeoutBackground > 0) {
       this.autoBackGroundPicker();

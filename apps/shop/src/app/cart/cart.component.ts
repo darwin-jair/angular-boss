@@ -1,11 +1,6 @@
 import { Product } from '@a-boss/domain';
 import { HttpClient } from '@angular/common/http';
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  OnInit
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BasketService } from '../basket.service';
 import { BasketItem } from './model/products.interface';
@@ -14,7 +9,7 @@ import { BasketItem } from './model/products.interface';
   selector: 'ab-shop-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartComponent implements OnInit {
   public products$: Observable<Product[]>;
@@ -52,15 +47,10 @@ export class CartComponent implements OnInit {
   }
 
   private getIndexofItem(item: BasketItem) {
-    return this.basket.findIndex(
-      basketItem => basketItem.product._id === item.product._id
-    );
+    return this.basket.findIndex(basketItem => basketItem.product._id === item.product._id);
   }
   private onBasketChange() {
-    const totalUnits = this.basket.reduce(
-      (total, item) => total + item.units,
-      0
-    );
+    const totalUnits = this.basket.reduce((total, item) => total + item.units, 0);
     this.basketService.units$.next(totalUnits);
     this.basketService.basket$.next(this.basket);
   }
@@ -69,6 +59,6 @@ export class CartComponent implements OnInit {
     setTimeout(() => {
       this.onRemoveItem(this.basket[0]);
       this.cdr.detectChanges();
-    }, 1000);
+    }, 10000);
   }
 }
